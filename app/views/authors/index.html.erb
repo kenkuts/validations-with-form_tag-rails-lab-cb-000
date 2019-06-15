@@ -1,0 +1,8 @@
+<h1>List of all the Authors</h1>
+
+<% @authors.each do |author| %>
+  <h3><%= link_to author.name, author_path(author) %></h3>
+<% end %>
+
+<%= button_to "Create Author", new_author_path, html_options = { :method => :get } %>
+<%= button_to "List Posts", posts_path, html_options = { :method => :get } %>

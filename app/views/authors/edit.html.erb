@@ -1,0 +1,37 @@
+<h1>Edit Author "<%= @author.name %>"</h1>
+
+<% if @author.errors.any? %>
+  <div id="error_explanation">
+    <h3>Errors:</h3>
+    <ul>
+      <% @author.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_tag author_path(@author), method: "patch" do %>
+  <div class="field
+  <%= " field_with_errors" if @author.errors[:name].any? %>">
+    <%= label_tag "name", "Name:" %>
+    <%= text_field_tag "name", @author.name %>
+  </div>
+
+
+  <div class="field
+  <%= " field_with_errors" if @author.errors[:email].any? %>">
+    <%= label_tag "email", "Email:" %>
+    <%= text_field_tag "email", @author.email %>
+  </div>
+
+  <div class="field
+  <%= " field_with_errors" if @author.errors[:phone_number].any? %>">
+    <%= label_tag "phone_number", "Phone Number:" %>
+    <%= text_field_tag "phone_number", @author.phone_number %>
+  </div>
+
+  <%= submit_tag "Update Author" %>
+<% end %>
+
+<%= button_to "List Authors", authors_path, html_options = { :method => :get } %>

@@ -1,0 +1,8 @@
+<h1>List of all Posts</h1>
+
+<% @posts.each do |post| %>
+  <h2><%= link_to post.title, post_path(post) %></h2>
+<% end %>
+
+<%= button_to "Create Post", new_post_path, html_options = { :method => :get } %>
+<%= button_to "List Authors", authors_path, html_options = { :method => :get } %>
